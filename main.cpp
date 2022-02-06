@@ -1,13 +1,15 @@
 // Program to illustrate the getopt()
 // function in C
 
-#include <stdio.h> 
 #include <unistd.h>
+#include <iomanip>
 #include <iostream>
 #include <string>
+#include <map>
 #include "commands.h"
 
 #define VERSION "1.0.0"
+#define GITHUB_URL "https://github.com/truongluan303/version_control_software"
 
 using namespace std;
 
@@ -34,7 +36,7 @@ int main(int argc, char** argv)
         print_help();
         return 0;
     }
-    if (argc < 2)
+    if (argc == 2)
     {
         switch(getopt(argc, argv, "HhPpVv"))
         {
@@ -70,7 +72,25 @@ int main(int argc, char** argv)
  */
 void print_help()
 {
-    cout << "Help Page" << endl;
+    map<string, string> commands_to_usage =
+    {
+            {PULL, "Clone a repository into a new repository"},
+            {ADD, "Add file/folder(s) to the index"},
+            {COMMIT, "Save changes to the current repository"},
+            {PUSH, "Update remove refs along with associated objects"},
+            {BRANCH, "Show or modify branches"},
+    };
+    cout << "Common commands and usage:" << endl
+         << "==========================" << endl;
+    for (auto& kvp : commands_to_usage)
+    {
+        string command = kvp.first;
+        string usage = kvp.second;
+        cout << setw(7) << command << " --- " << usage << endl;
+    }
+    cout << endl << "VCS is a distributed version control software."
+         << endl << "Source code can be found at: " << GITHUB_URL
+         << endl << endl;
 }
 
 
@@ -94,5 +114,5 @@ void print_man_page()
  */
 void print_version()
 {
-    cout << "version control software " << VERSION << endl;
+    cout << "VCS " << VERSION << endl;
 }

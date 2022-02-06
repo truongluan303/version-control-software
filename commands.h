@@ -1,3 +1,6 @@
+#ifndef COMMANDS_H
+#define COMMANDS_H
+
 using namespace std;
 
 
@@ -88,3 +91,7 @@ void branch(char* const* params);
  * @param params parameters
  */
 void checkout(char* const* params);
+
+
+
+#endif

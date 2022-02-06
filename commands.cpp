@@ -34,20 +34,6 @@ void push(char* const* params)
 
 
 
-void commit(char* const* params)
-{
-
-}
-
-
-
-void push(char* const* params)
-{
-
-}
-
-
-
 void branch(char* const* params)
 {
 
